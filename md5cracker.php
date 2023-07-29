@@ -12,7 +12,6 @@ function crackMd5Hash($hash, $wordlistPath) {
     return false; 
 }
 
-// Parse command-line arguments
 $shortOpts = "h:w:h";
 $longOpts = array(
     "hash:",
@@ -27,23 +26,19 @@ if (isset($options['help'])) {
     echo "Crack an MD5 hash using a wordlist.\n";
     echo "\n";
     echo "Options:\n";
-    echo "  -h, --hash         MD5 hash to crack (required)\n";
-    echo "  -w, --wordlist     Path to the wordlist file (required)\n";
-    echo "  --help             Show this help message and exit\n";
+    echo "  --hash         MD5 hash to crack (required)\n";
+    echo "  --wordlist     Path to the wordlist file (required)\n";
+    echo "  --help         Show this help message and exit\n";
     exit(0);
 }
 
-if (isset($options['h'])) {
-    $hashToCrack = $options['h'];
-} elseif (isset($options['hash'])) {
+if (isset($options['hash'])) {
     $hashToCrack = $options['hash'];
 } else {
     die("Error: Missing required argument -h/--hash for MD5 hash. Use --help for usage information.\n");
 }
 
-if (isset($options['w'])) {
-    $wordlistPath = $options['w'];
-} elseif (isset($options['wordlist'])) {
+if (isset($options['wordlist'])) {
     $wordlistPath = $options['wordlist'];
 } else {
     die("Error: Missing required argument -w/--wordlist for wordlist path. Use --help for usage information.\n");
