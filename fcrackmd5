@@ -65,9 +65,9 @@ banner();
 $result = crackMd5Hash($hashToCrack, $wordlistPath);
 
 if ($result !== false) {
-    echo "Password found: " . $result;
+    echo "\nPassword found: " . $result;
 } else {
-    echo "Password not found in the wordlist.";
+    echo "\nPassword not found in the wordlist.";
 }
 
 ?>
