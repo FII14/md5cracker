@@ -38,7 +38,7 @@ $longOpts = array(
 $options = getopt($shortOpts, $longOpts);
 
 if (isset($options['help'])) {
-    banner
+    banner();
     echo "\nUsage: php fcrackmd5 [OPTIONS]\n";
     echo "\n";
     echo "Options:\n";
