@@ -1,5 +1,4 @@
 <?php
-
 function crackMd5Hash($hash, $wordlistPath) {
     $wordlist = file($wordlistPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
@@ -13,8 +12,14 @@ function crackMd5Hash($hash, $wordlistPath) {
     return false; 
 }
 
-$hashToCrack = "5d41402abc4b2a76b9719d911017c592";
-$wordlistPath = "path/to/wordlist.txt";
+// Parse command-line arguments
+$parser = new argparse\ArgumentParser();
+$parser->addArgument('-h', '--hash', ['required' => true, 'help' => 'MD5 hash to crack']);
+$parser->addArgument('-w', '--wordlist', ['required' => true, 'help' => 'Path to the wordlist file']);
+$args = $parser->parseArgs();
+
+$hashToCrack = $args->hash;
+$wordlistPath = $args->wordlist;
 $result = crackMd5Hash($hashToCrack, $wordlistPath);
 
 if ($result !== false) {
@@ -22,3 +27,4 @@ if ($result !== false) {
 } else {
     echo "Password not found in the wordlist.";
 }
+?>
