@@ -51,13 +51,13 @@ if (isset($options['help'])) {
 if (isset($options['hash'])) {
     $hashToCrack = $options['hash'];
 } else {
-    die("Error: Missing required argument -h/--hash for MD5 hash. Use --help for usage information.\n");
+    die("Error: Missing required argument --hash for MD5 hash. Use --help for usage information.\n");
 }
 
 if (isset($options['wordlist'])) {
     $wordlistPath = $options['wordlist'];
 } else {
-    die("Error: Missing required argument -w/--wordlist for wordlist path. Use --help for usage information.\n");
+    die("Error: Missing required argument --wordlist for wordlist path. Use --help for usage information.\n");
 }
 
 banner();
