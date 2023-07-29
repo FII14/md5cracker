@@ -26,7 +26,7 @@ $options = getopt($shortOpts, $longOpts);
 
 if (isset($options['help'])) {
     echo "Usage: php fcrackmd5 [OPTIONS]\n";
-    echo "Crack an MD5 hash using a wordlist.\n";
+    echo "Simple php program to crack md5 password hash using wordlist.\n";
     echo "\n";
     echo "Options:\n";
     echo "  --hash         MD5 hash to crack (required)\n";
