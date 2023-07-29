@@ -1,5 +1,4 @@
 <?php
-require 'vendor/autoload.php';
 function crackMd5Hash($hash, $wordlistPath) {
     $wordlist = file($wordlistPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
@@ -14,13 +13,30 @@ function crackMd5Hash($hash, $wordlistPath) {
 }
 
 // Parse command-line arguments
-$parser = new argparse\ArgumentParser();
-$parser->addArgument('-h', '--hash', ['required' => true, 'help' => 'MD5 hash to crack']);
-$parser->addArgument('-w', '--wordlist', ['required' => true, 'help' => 'Path to the wordlist file']);
-$args = $parser->parseArgs();
+$shortOpts = "h:w:";
+$longOpts = array(
+    "hash:",
+    "wordlist:"
+);
 
-$hashToCrack = $args->hash;
-$wordlistPath = $args->wordlist;
+$options = getopt($shortOpts, $longOpts);
+
+if (isset($options['h'])) {
+    $hashToCrack = $options['h'];
+} elseif (isset($options['hash'])) {
+    $hashToCrack = $options['hash'];
+} else {
+    die("Error: Missing required argument -h/--hash for MD5 hash.");
+}
+
+if (isset($options['w'])) {
+    $wordlistPath = $options['w'];
+} elseif (isset($options['wordlist'])) {
+    $wordlistPath = $options['wordlist'];
+} else {
+    die("Error: Missing required argument -w/--wordlist for wordlist path.");
+}
+
 $result = crackMd5Hash($hashToCrack, $wordlistPath);
 
 if ($result !== false) {
