@@ -1,6 +1,3 @@
-// @ md5cracker
-// @ by: fii14
-
 <?php
 
 function crackMd5Hash($hash, $wordlistPath) {
@@ -16,13 +13,12 @@ function crackMd5Hash($hash, $wordlistPath) {
     return false; 
 }
 
-$hashToCrack = "5d41402abc4b2a76b9719d911017c592"; // Replace this with the hash you want to crack
-$wordlistPath = "path/to/wordlist.txt"; // Replace this with the path to your wordlist file
-
+$hashToCrack = "5d41402abc4b2a76b9719d911017c592";
+$wordlistPath = "path/to/wordlist.txt";
 $result = crackMd5Hash($hashToCrack, $wordlistPath);
 
 if ($result !== false) {
-    echo "Password successfully cracked: " . $result;
+    echo "Password found: " . $result;
 } else {
     echo "Password not found in the wordlist.";
 }
