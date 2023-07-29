@@ -1,0 +1,5 @@
+{
+    "require": {
+        "maximebf/argparse": "^2.2"
+    }
+}
