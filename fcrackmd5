@@ -2,6 +2,17 @@
 
 <?php
 
+function banner(){
+    echo "███████╗ ██████╗██████╗  █████╗  ██████╗██╗  ██╗███╗   ███╗██████╗ ███████╗\n";
+    echo "██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║ ██╔╝████╗ ████║██╔══██╗██╔════╝\n";
+    echo "█████╗  ██║     ██████╔╝███████║██║     █████╔╝ ██╔████╔██║██║  ██║███████╗\n";
+    echo "██╔══╝  ██║     ██╔══██╗██╔══██║██║     ██╔═██╗ ██║╚██╔╝██║██║  ██║╚════██║\n";
+    echo "██║     ╚██████╗██║  ██║██║  ██║╚██████╗██║  ██╗██║ ╚═╝ ██║██████╔╝███████║\n";
+    echo "╚═╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═════╝ ╚══════╝\n";
+    echo "\n";
+    echo "Simple php program to crack md5 password hash using wordlist.\n";
+}
+
 function crackMd5Hash($hash, $wordlistPath) {
     $wordlist = file($wordlistPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
@@ -27,8 +38,8 @@ $longOpts = array(
 $options = getopt($shortOpts, $longOpts);
 
 if (isset($options['help'])) {
-    echo "Usage: php fcrackmd5 [OPTIONS]\n";
-    echo "Simple php program to crack md5 password hash using wordlist.\n";
+    banner
+    echo "\nUsage: php fcrackmd5 [OPTIONS]\n";
     echo "\n";
     echo "Options:\n";
     echo "  --hash         MD5 hash to crack (required)\n";
