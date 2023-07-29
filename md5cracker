@@ -22,7 +22,7 @@ $longOpts = array(
 $options = getopt($shortOpts, $longOpts);
 
 if (isset($options['help'])) {
-    echo "Usage: php your_script.php [OPTIONS]\n";
+    echo "Usage: php fcrackmd5 [OPTIONS]\n";
     echo "Crack an MD5 hash using a wordlist.\n";
     echo "\n";
     echo "Options:\n";
