@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 function crackMd5Hash($hash, $wordlistPath) {
     $wordlist = file($wordlistPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
