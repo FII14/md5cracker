@@ -60,6 +60,8 @@ if (isset($options['wordlist'])) {
     die("Error: Missing required argument -w/--wordlist for wordlist path. Use --help for usage information.\n");
 }
 
+banner();
+
 $result = crackMd5Hash($hashToCrack, $wordlistPath);
 
 if ($result !== false) {
