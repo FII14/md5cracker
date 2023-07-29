@@ -9,6 +9,8 @@ function crackMd5Hash($hash, $wordlistPath) {
         $hashedPassword = md5($password);
         if ($hashedPassword === $hash) {
             return $password;
+        } else{
+            echo "Wrong password: " . $password;
         }
     }
     
