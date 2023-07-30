@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import hashlib
-import argparse
+import time
 
 def crack_md5_hash(hash_to_crack, wordlist_path):
     with open(wordlist_path, 'r') as wordlist_file:
@@ -13,16 +13,15 @@ def crack_md5_hash(hash_to_crack, wordlist_path):
             return password
         else:
             print(f"Incorrect password: {password}")
+            time.sleep(1)  # Animasi jeda satu detik
 
     return False
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--hash", help="MD5 hash to crack", required=True)
-    parser.add_argument("--wordlist", help="Path to the wordlist file", required=True)
-    args = parser.parse_args()
+    hash_to_crack = input("Enter the MD5 hash to crack: ")
+    wordlist_path = input("Enter the path to the wordlist file: ")
 
-    result = crack_md5_hash(args.hash, args.wordlist)
+    result = crack_md5_hash(hash_to_crack, wordlist_path)
 
     if result:
         print(f"\nPassword found: {result}")
