@@ -4,7 +4,7 @@ import hashlib
 import time
 
 def crack_md5_hash(hash_to_crack, wordlist_path):
-    with open(wordlist_path, 'r', encoding='latin-1') as wordlist_file:
+    with open(wordlist_path, 'r', encoding='latin-1', errors='ignore') as wordlist_file:
         wordlist = wordlist_file.read().splitlines()
 
     for password in wordlist:
