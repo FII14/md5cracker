@@ -7,6 +7,7 @@ def crack_md5_hash(hash_to_crack, wordlist_path):
     with open(wordlist_path, 'r', encoding='latin-1', errors='ignore') as wordlist_file:
         wordlist = wordlist_file.read().splitlines()
 
+    print("")
     for password in wordlist:
         hashed_password = hashlib.md5(password.encode()).hexdigest()
         if hashed_password == hash_to_crack:
