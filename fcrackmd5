@@ -1,60 +1,30 @@
-#!/usr/bin/env php
+#!/usr/bin/env python3
 
-<?php
-function crackMd5Hash($hash, $wordlistPath) {
-    $wordlist = file($wordlistPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    
-    foreach ($wordlist as $password) {
-        $hashedPassword = md5($password);
-        if ($hashedPassword === $hash) {
-            return $password;
-        } else{
-            echo "Incorrect password: " . $password . "\n";
-        }
-    }
-    
-    return false; 
-}
+import hashlib
+import argparse
 
-$shortOpts = "h:w:h";
-$longOpts = array(
-    "hash:",
-    "wordlist:",
-    "help"
-);
+def crack_md5_hash(hash_to_crack, wordlist_path):
+    with open(wordlist_path, 'r') as wordlist_file:
+        wordlist = wordlist_file.read().splitlines()
 
-$options = getopt($shortOpts, $longOpts);
+    for password in wordlist:
+        hashed_password = hashlib.md5(password.encode()).hexdigest()
+        if hashed_password == hash_to_crack:
+            return password
+        else:
+            print(f"Incorrect password: {password}")
 
-if (isset($options['help'])) {
-    banner();
-    echo "\nUsage: php fcrackmd5 [OPTIONS]\n";
-    echo "Simple php program to crack md5 password hash using wordlist.\n";
-    echo "\n";
-    echo "Options:\n";
-    echo "  --hash         MD5 hash to crack (required)\n";
-    echo "  --wordlist     Path to the wordlist file (required)\n";
-    echo "  --help         Show this help message and exit\n";
-    exit(0);
-}
+    return False
 
-if (isset($options['hash'])) {
-    $hashToCrack = $options['hash'];
-} else {
-    die("Error: Missing required argument --hash for MD5 hash. Use --help for usage information.\n");
-}
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--hash", help="MD5 hash to crack", required=True)
+    parser.add_argument("--wordlist", help="Path to the wordlist file", required=True)
+    args = parser.parse_args()
 
-if (isset($options['wordlist'])) {
-    $wordlistPath = $options['wordlist'];
-} else {
-    die("Error: Missing required argument --wordlist for wordlist path. Use --help for usage information.\n");
-}
+    result = crack_md5_hash(args.hash, args.wordlist)
 
-$result = crackMd5Hash($hashToCrack, $wordlistPath);
-
-if ($result !== false) {
-    echo "\nPassword found: " . $result;
-} else {
-    echo "\nPassword not found in the wordlist.";
-}
-
-?>
+    if result:
+        print(f"\nPassword found: {result}")
+    else:
+        print("\nPassword not found in the wordlist.")
