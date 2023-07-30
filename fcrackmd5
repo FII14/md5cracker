@@ -12,9 +12,6 @@ def crack_md5_hash(hash_to_crack, wordlist_path):
         hashed_password = hashlib.md5(password.encode()).hexdigest()
         if hashed_password == hash_to_crack:
             return password
-        else:
-            print(f"Incorrect password: {password}")
-            time.sleep(1)  # Animasi jeda satu detik
 
     return False
 
@@ -25,6 +22,6 @@ if __name__ == "__main__":
     result = crack_md5_hash(hash_to_crack, wordlist_path)
 
     if result:
-        print(f"\nPassword found: {result}")
+        print(f"Password found: {result}")
     else:
-        print("\nPassword not found in the wordlist.")
+        print("Password not found in the wordlist.")
