@@ -6,7 +6,7 @@ nama_file = "rockyou.txt.gz"
 try:
   response = requests.get(link)
   response.raise_for_status()
-  with open(save_path, 'wb') as file:
+  with open(nama_file, 'wb') as file:
     file.write(response.content)
     print("Download completed!")
 except requests.exceptions.RequestException as e:
