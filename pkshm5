@@ -3,6 +3,7 @@
 import hashlib
 import time
 import sys
+import os
 
 print("""
 Program: Pemecah Kata Sandi Hash MD5
