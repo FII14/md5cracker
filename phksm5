@@ -13,10 +13,10 @@ print("""
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 """)
 
-hash_yang_dipecahkan = input("Masukkan hash MD5 yang ingin dipecahkan: ")
+hash = input("Masukkan hash MD5 yang ingin dipecahkan: ")
 
-if len(hash_yang_dipecahkan) != 32:
-    print(f"Kesalahan: Hash '{hash_yang_dipecahkan}' tidak valid.")
+if len(hash) != 32:
+    print(f"Kesalahan: Hash '{hash}' tidak valid.")
     sys.exit(1)
 
 wordlist = input("Masukkan path ke file wordlist: ")
@@ -30,12 +30,12 @@ with open(wordlist, 'r', encoding='latin-1', errors='ignore') as w:
 
 for kata_sandi in daftar_kata:
     hash_kata_sandi = hashlib.md5(kata_sandi.encode()).hexdigest()
-    if hash_kata_sandi == hash_yang_dipecahkan:
-        print(f"\n[*] Hash MD5: {hash_yang_dipecahkan}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Benar\n")
+    if hash_kata_sandi == hash:
+        print(f"\n[*] Hash MD5: {hash}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Benar\n")
         break
         sys.exit(0)
     else:
-        print(f"\n[*] Hash MD5: {hash_yang_dipecahkan}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Salah\n")
+        print(f"\n[*] Hash MD5: {hash}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Salah\n")
     time.sleep(1)
 
 else:
