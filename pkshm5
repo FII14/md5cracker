@@ -6,11 +6,11 @@ import sys
 import os
 
 print("""
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@ Program : Pemecah Kata Sandi Hash MD5    @
-@ Pembuat : Rofi [FII14]                   @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Program : Pemecah Kata Sandi Hash MD5     @
+@ Pembuat : Rofi [FII14]                    @
 @ GitHub  : https://github.com/FII14/pkshm5 @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 """)
 
 hash_yang_dipecahkan = input("Masukkan hash MD5 yang ingin dipecahkan: ")
