@@ -7,7 +7,7 @@ import os
 
 print("""
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@ Program : Pemecah Kata Sandi Hash MD5     @
+@ Program : Pemecah hash kata Sandi  MD5    @
 @ Pembuat : Rofi [FII14]                    @
 @ GitHub  : https://github.com/FII14/pkshm5 @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
