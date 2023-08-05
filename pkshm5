@@ -2,22 +2,32 @@
 
 import hashlib
 import time
+import sys
 
 hash_yang_dipecahkan = input("Masukkan hash MD5 yang ingin dipecahkan: ")
 
 if len(hash_yang_dipecahkan) != 32:
-    print("Kesalahan: Hash yang dimasukkan tidak valid.")
+    print(f"Kesalahan: Hash '{hash_yang_dipecahkan}' tidak valid.")
+    sys.exit(1)
 
-path_wordlist = input("Masukkan path ke file wordlist: ")
+wordlist = input("Masukkan path ke file wordlist: ")
 
-with open(path_wordlist, 'r', encoding='latin-1', errors='ignore') as berkas_wordlist:
-    daftar_kata = berkas_wordlist.read().splitlines()
+if not os.path.exists(wordlist):
+    print(f"Kesalahan: File wordlist '{wordlist}' tidak ditemukan.")
+    sys.exit(1)
 
-print("")
+with open(wordlist, 'r', encoding='latin-1', errors='ignore') as w:
+    daftar_kata = w.read().splitlines()
+
 for kata_sandi in daftar_kata:
     hash_kata_sandi = hashlib.md5(kata_sandi.encode()).hexdigest()
     if hash_kata_sandi == hash_yang_dipecahkan:
-        print(f"Kata sandi ditemukan: {kata_sandi}")
+        print(f"\n[*] Hash MD5: {hash_yang_dipecahkan}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Benar\n")
         break
+        sys.exit(0)
+    else:
+        print(f"\n[*] Hash MD5: {hash_yang_dipecahkan}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Salah\n")
+
 else:
     print("Kata sandi tidak ditemukan dalam wordlist.")
+    sys.exit(1)
