@@ -19,13 +19,13 @@ if len(hash) != 32:
     print(f"Kesalahan: Hash '{hash}' tidak valid.")
     sys.exit(1)
 
-wordlist = input("Masukkan path ke file wordlist: ")
+file_wordlist = input("Masukkan path ke file wordlist: ")
 
-if not os.path.exists(wordlist):
-    print(f"Kesalahan: File wordlist '{wordlist}' tidak ditemukan.")
+if not os.path.exists(file_wordlist):
+    print(f"Kesalahan: File wordlist '{file_wordlist}' tidak ditemukan.")
     sys.exit(1)
 
-with open(wordlist, 'r', encoding='latin-1', errors='ignore') as w:
+with open(file_wordlist, 'r', encoding='latin-1', errors='ignore') as w:
     daftar_kata = w.read().splitlines()
 
 for kata_sandi in daftar_kata:
@@ -39,5 +39,5 @@ for kata_sandi in daftar_kata:
     time.sleep(1)
 
 else:
-    print("\nKata sandi tidak ditemukan dalam wordlist.")
+    print("\nKata sandi tidak ditemukan dalam file wordlist '{file_wordlist}'.")
     sys.exit(1)
