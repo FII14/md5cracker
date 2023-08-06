@@ -30,10 +30,12 @@ with open(file_wordlist, 'r', encoding='latin-1', errors='ignore') as w:
 
 for kata_sandi in daftar_kata:
     hash_kata_sandi = hashlib.md5(kata_sandi.encode()).hexdigest()
+    
     if hash_kata_sandi == hash:
         print(f"\n[*] Hash MD5: {hash}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Benar\n")
         break
         sys.exit(0)
+
     else:
         print(f"\n[*] Hash MD5: {hash}\n[*] Kata sandi: {kata_sandi}\n[*] Status: Salah")
     time.sleep(1)
